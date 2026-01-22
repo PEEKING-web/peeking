@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Github, Linkedin, Mail, ExternalLink, MapPin, Moon, Sun } from 'lucide-react';
+import { useState, useRef, useEffect } from 'react';
+import { Github, Linkedin, Mail, ExternalLink, MapPin, Moon, Sun, Music, Play, Pause ,Volume2 } from 'lucide-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSteam } from '@fortawesome/free-brands-svg-icons';
 import { faStopwatch } from '@fortawesome/free-solid-svg-icons';
@@ -10,6 +10,10 @@ export default function Portfolio() {
   const [darkMode, setDarkMode] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [formStatus, setFormStatus] = useState('');
+  const [currentSong, setCurrentSong] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [volume, setVolume] = useState(0.6);
+
 
   const handleSubmit = async () => {
     if (!formData.name || !formData.email || !formData.message) {
@@ -57,6 +61,24 @@ export default function Portfolio() {
     { name: 'Git', logo: 'https://cdn.simpleicons.org/git/F05032' }
   ];
 
+  const songs = [
+    {
+      title: 'Fish-Maan',
+      artist: 'Hotel Ugly',
+      url: "/FishMaan.mp3"
+    },
+    {
+      title: 'Applesauce',
+      artist: 'Hotel Ugly',
+      url: '/Applesauce.mp3'
+    },
+    {
+      title: 'Stevie Doesnt Wonder',
+      artist: 'Hotel Ugly',
+      url: '/StevieDoesntWonder.mp3'
+    }
+  ];
+
   const projects = [
   {
     title: 'DevFocus',
@@ -99,10 +121,48 @@ export default function Portfolio() {
   }
 ];
 
+  const audioRef = useRef(null);
+
+    useEffect(() => {
+      if (!audioRef.current) return;
+
+      audioRef.current.volume = volume;
+
+      if (currentSong === null) return;
+
+      if (isPlaying) {
+        audioRef.current.play().catch(() => {});
+      } else {
+        audioRef.current.pause();
+      }
+    }, [isPlaying, currentSong, volume]);
+
+
+
+  const handleSongClick = (index) => {
+    if (currentSong === index && isPlaying) {
+      setIsPlaying(false);
+    } else {
+      setCurrentSong(index);
+      setIsPlaying(true);
+    }
+  };
 
   return (
     <div className={`min-h-screen transition-colors duration-300 ${darkMode ? 'bg-gray-900' : 'bg-white'}`}>
-      <div className="max-w-3xl mx-auto px-6 py-12">
+      {/* Hidden audio element */}
+      {currentSong !== null && (
+       <audio
+        ref={audioRef}
+        src={currentSong !== null ? songs[currentSong].url : ""}
+        onEnded={() => setIsPlaying(false)}
+      />
+      )}
+
+      <div className="max-w-7xl mx-auto px-6 py-12">
+        <div className="flex gap-8 items-start">
+          {/* Main Content */}
+          <div className="flex-1 max-w-3xl translate-x-[180px]">
         
         {/* Header */}
         <header className="mb-16">
@@ -452,6 +512,73 @@ export default function Portfolio() {
           <p style={{ fontFamily: 'Georgia, serif' }}>Thanks for stopping by · © 2026.</p>
         </footer>
       </div>
+
+      {/* Music Container - Side by side with content */}
+      <div className={`hidden lg:block w-80 flex-shrink-0 sticky top-12 translate-x-[300px] translate-y-[200px]`}>
+        <div className={`p-6 rounded-2xl shadow-lg transition-all duration-300 ${
+          darkMode 
+          ? 'bg-gray-800 border-2 border-white/20 hover:border-white/40' 
+          : 'bg-white border-2 border-black/20 hover:border-black/50'
+        }`}>
+          <div className="flex items-center gap-2 mb-6">
+            <Music className={`w-5 h-5 ${darkMode ? 'text-white' : 'text-gray-900'}`} />
+            <h3 className={`text-xl font-light ${darkMode ? 'text-white' : 'text-gray-900'}`} style={{ fontFamily: 'Georgia, serif' }}>
+              My Favorite Songs
+            </h3>
+          </div>
+
+          <div className="space-y-3">
+            {songs.map((song, index) => (
+              <button
+                key={index}
+                onClick={() => handleSongClick(index)}
+                className={`w-full text-left p-4 rounded-lg transition-all duration-300 hover:scale-105 ${
+                  currentSong === index && isPlaying
+                    ? darkMode
+                      ? 'bg-gray-700 ring-2 ring-blue-500'
+                      : 'bg-gray-50 ring-2 ring-blue-400 shadow-md'
+                    : darkMode
+                    ? 'bg-gray-900 hover:bg-gray-700'
+                    : 'bg-gray-50 hover:bg-gray-100 shadow-sm'
+                }`}
+              >
+                <div className="flex items-center justify-between mb-1">
+                  <p className={`font-medium text-sm ${darkMode ? 'text-white' : 'text-gray-900'}`} style={{ fontFamily: 'Georgia, serif' }}>
+                    {song.title}
+                  </p>
+                  {currentSong === index && isPlaying ? (
+                    <Pause className={`w-4 h-4 ${darkMode ? 'text-blue-400' : 'text-blue-500'}`} />
+                  ) : (
+                    <Play className={`w-4 h-4 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`} />
+                  )}
+                </div>
+                <p className={`text-xs ${darkMode ? 'text-gray-400' : 'text-gray-600'}`} style={{ fontFamily: 'Georgia, serif' }}>
+                  {song.artist}
+                </p>
+              </button>
+            ))}
+          </div>
+        {/* Volume Control */}
+          <div className="mt-5 flex items-center justify-center gap-3">
+          <Volume2 className={`w-4 h-4 ${darkMode ? "text-gray-300" : "text-gray-700"}`} />
+
+          <input
+            type="range"
+            min="0"
+            max="1"
+            step="0.01"
+            value={volume}
+            onChange={(e) => setVolume(Number(e.target.value))}
+            className="w-40 accent-blue-500 cursor-pointer"
+          />
+        </div>
+
+
+         
+        </div>
+      </div>
+    </div>
+    </div>
     </div>
   );
 }
