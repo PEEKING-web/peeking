@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Github, Linkedin, Mail, ExternalLink, MapPin, Moon, Sun, Music, Play, Pause ,Volume2 } from 'lucide-react';
+import { Github, Linkedin, Mail, ExternalLink, MapPin, Moon, Sun, Music, Play, Pause, Volume2 } from 'lucide-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSteam } from '@fortawesome/free-brands-svg-icons';
 import { faStopwatch } from '@fortawesome/free-solid-svg-icons';
@@ -159,10 +159,10 @@ export default function Portfolio() {
       />
       )}
 
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        <div className="flex gap-8 items-start">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-12">
+        <div className="flex flex-col lg:flex-row gap-8 items-start">
           {/* Main Content */}
-          <div className="flex-1 max-w-3xl translate-x-[180px]">
+          <div className="w-full lg:flex-1 lg:max-w-3xl lg:translate-x-[180px]">
         
         {/* Header */}
         <header className="mb-16">
@@ -189,8 +189,8 @@ export default function Portfolio() {
             </div>
           </div>
           
-          <div className="flex items-center gap-4 mb-4">
-            <h1 className={`text-5xl font-light ${darkMode ? 'text-white' : 'text-gray-900'}`} style={{ fontFamily: 'Georgia, serif', letterSpacing: '-0.02em' }}>
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4">
+            <h1 className={`text-3xl sm:text-4xl lg:text-5xl font-light ${darkMode ? 'text-white' : 'text-gray-900'}`} style={{ fontFamily: 'Georgia, serif', letterSpacing: '-0.02em' }}>
               Dipanshu Dubey
             </h1>
             
@@ -208,7 +208,7 @@ export default function Portfolio() {
             </button>
           </div>
           
-          <p className={`text-xl mb-4 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`} style={{ fontFamily: 'Georgia, serif' }}>
+          <p className={`text-lg sm:text-xl mb-4 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`} style={{ fontFamily: 'Georgia, serif' }}>
             Full-Stack Developer
           </p>
           
@@ -218,7 +218,7 @@ export default function Portfolio() {
           </p>
           
           {/* Social Links with Hover Animation */}
-          <div className="flex gap-6">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
             <a
               href="https://github.com/PEEKING-web"
               target="_blank"
@@ -231,7 +231,7 @@ export default function Portfolio() {
                 <Github className="w-5 h-5 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12" />
                 <span className="absolute -inset-2 bg-blue-500 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur"></span>
               </div>
-              <span className="font-medium">GitHub</span>
+              <span className="font-medium text-sm sm:text-base">GitHub</span>
             </a>
             <a
               href="https://www.linkedin.com/in/dipanshu-dubey-5b204b167"
@@ -245,7 +245,7 @@ export default function Portfolio() {
                 <Linkedin className="w-5 h-5 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12" />
                 <span className="absolute -inset-2 bg-blue-500 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur"></span>
               </div>
-              <span className="font-medium">LinkedIn</span>
+              <span className="font-medium text-sm sm:text-base">LinkedIn</span>
             </a>
             <div
               className={`group flex items-center gap-2 transition-all duration-300 cursor-default ${
@@ -256,22 +256,22 @@ export default function Portfolio() {
                 <Mail className="w-5 h-5 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12" />
                 <span className="absolute -inset-2 bg-blue-500 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur"></span>
               </div>
-              <span className="font-medium">dipanshudubey61@gmail.com</span>
+              <span className="font-medium text-sm sm:text-base break-all">dipanshudubey61@gmail.com</span>
             </div>
           </div>
         </header>
 
         {/* About */}
         <section className="mb-16">
-          <h2 className={`text-3xl font-light mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`} style={{ fontFamily: 'Georgia, serif' }}>
+          <h2 className={`text-2xl sm:text-3xl font-light mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`} style={{ fontFamily: 'Georgia, serif' }}>
             About
           </h2>
-          <p className={`leading-relaxed mb-4 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`} style={{ fontFamily: 'Georgia, serif', fontSize: '17px' }}>
+          <p className={`leading-relaxed mb-4 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`} style={{ fontFamily: 'Georgia, serif', fontSize: '15px', lineHeight: '1.6' }}>
            Full-stack developer with experience building web applications 
             using modern technologies. Passionate about creating efficient, 
             scalable solutions and learning new technologies.
           </p>
-          <p className={`leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-700'}`} style={{ fontFamily: 'Georgia, serif', fontSize: '17px' }}>
+          <p className={`leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-700'}`} style={{ fontFamily: 'Georgia, serif', fontSize: '15px', lineHeight: '1.6' }}>
             Currently focused on React, Node.js, and AI integration. Always 
             exploring new tools and best practices. Open to full-time 
             opportunities where I can contribute and grow.
@@ -280,7 +280,7 @@ export default function Portfolio() {
 
         {/* Tech Stack */}
         <section className="mb-16">
-          <h2 className={`text-3xl font-light mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`} style={{ fontFamily: 'Georgia, serif' }}>
+          <h2 className={`text-2xl sm:text-3xl font-light mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`} style={{ fontFamily: 'Georgia, serif' }}>
             Tech Stack
           </h2>
           <div className="flex flex-wrap gap-3">
@@ -308,7 +308,7 @@ export default function Portfolio() {
 
         {/* Projects */}
         <section className="mb-16">
-          <h2 className={`text-3xl font-light mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`} style={{ fontFamily: 'Georgia, serif' }}>
+          <h2 className={`text-2xl sm:text-3xl font-light mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`} style={{ fontFamily: 'Georgia, serif' }}>
             Projects
           </h2>
           
@@ -321,17 +321,17 @@ export default function Portfolio() {
                 }`}
               >
                 {/* Project Header with Icon and Animated Links */}
-                <div className="flex items-start justify-between mb-3">
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3 gap-3 sm:gap-0">
                   <div className="flex items-center gap-3">
-                        <span className={`text-3xl ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                        <span className={`text-2xl sm:text-3xl ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                           <FontAwesomeIcon icon={project.icon} />
                         </span>
 
-                    <h3 className={`text-2xl font-light ${darkMode ? 'text-white' : 'text-gray-900'}`} style={{ fontFamily: 'Georgia, serif' }}>
+                    <h3 className={`text-xl sm:text-2xl font-light ${darkMode ? 'text-white' : 'text-gray-900'}`} style={{ fontFamily: 'Georgia, serif' }}>
                       {project.title}
                     </h3>
                   </div>
-                  <div className="flex gap-3 ml-4">
+                  <div className="flex gap-3 sm:ml-4">
                     {project.github && (
                       <a
                         href={project.github}
@@ -367,7 +367,7 @@ export default function Portfolio() {
                   </div>
                 </div>
 
-                <p className={`mb-3 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`} style={{ fontFamily: 'Georgia, serif', fontSize: '16px' }}>
+                <p className={`mb-3 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`} style={{ fontFamily: 'Georgia, serif', fontSize: '15px', lineHeight: '1.6' }}>
                   {project.description}
                 </p>
 
@@ -403,10 +403,10 @@ export default function Portfolio() {
 
         {/* Contact */}
         <section className="mb-16">
-          <h2 className={`text-3xl font-light mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`} style={{ fontFamily: 'Georgia, serif' }}>
+          <h2 className={`text-2xl sm:text-3xl font-light mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`} style={{ fontFamily: 'Georgia, serif' }}>
             Get in Touch
           </h2>
-          <p className={`mb-6 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`} style={{ fontFamily: 'Georgia, serif', fontSize: '17px' }}>
+          <p className={`mb-6 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`} style={{ fontFamily: 'Georgia, serif', fontSize: '15px', lineHeight: '1.6' }}>
             I'm always interested in hearing about new projects and opportunities.
           </p>
           
@@ -513,8 +513,8 @@ export default function Portfolio() {
         </footer>
       </div>
 
-      {/* Music Container - Side by side with content */}
-      <div className={`hidden lg:block w-80 flex-shrink-0 sticky top-12 translate-x-[300px] translate-y-[200px]`}>
+      {/* Music Container - Side by side with content on desktop, below on mobile */}
+      <div className={`w-full lg:w-80 lg:flex-shrink-0 lg:sticky lg:top-12 lg:translate-x-[300px] lg:translate-y-[200px] mt-8 lg:mt-0`}>
         <div className={`p-6 rounded-2xl shadow-lg transition-all duration-300 ${
           darkMode 
           ? 'bg-gray-800 border-2 border-white/20 hover:border-white/40' 
