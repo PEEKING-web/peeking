@@ -106,6 +106,29 @@ export default function Portfolio() {
         
         {/* Header */}
         <header className="mb-16">
+          {/* Profile Picture */}
+          <div className="mb-6 relative inline-block group cursor-pointer">
+            {/* Animated glow effect */}
+            <div className={`absolute -inset-1 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 blur-lg ${
+              darkMode 
+                ? 'bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500' 
+                : 'bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400'
+            } group-hover:blur-xl`}></div>
+            
+            {/* Profile picture container */}
+            <div className={`relative w-32 h-32 rounded-full overflow-hidden border-4 transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 ${
+              darkMode 
+                ? 'border-gray-800 group-hover:border-gray-700' 
+                : 'border-gray-200 group-hover:border-gray-300'
+            }`}>
+              <img 
+                src="/garou.jpeg"
+                alt="Profile"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+          </div>
+          
           <div className="flex items-center gap-4 mb-4">
             <h1 className={`text-5xl font-light ${darkMode ? 'text-white' : 'text-gray-900'}`} style={{ fontFamily: 'Georgia, serif', letterSpacing: '-0.02em' }}>
               Dipanshu Dubey
