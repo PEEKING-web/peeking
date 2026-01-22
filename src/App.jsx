@@ -189,7 +189,7 @@ export default function Portfolio() {
             </div>
           </div>
           
-          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4">
+          <div className="flex items-center gap-4 mb-4">
             <h1 className={`text-3xl sm:text-4xl lg:text-5xl font-light ${darkMode ? 'text-white' : 'text-gray-900'}`} style={{ fontFamily: 'Georgia, serif', letterSpacing: '-0.02em' }}>
               Dipanshu Dubey
             </h1>
